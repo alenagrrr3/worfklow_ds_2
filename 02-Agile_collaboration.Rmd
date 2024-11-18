@@ -1,1 +1,14 @@
 # Agile collaboration
+
+
+<div class="gray"> 
+
+Lesson 2. Git conflict.
+    Change 2 lines in your README.md locally (on your own computer)
+    Create one commit for each change:
+        Select the changes you want to commit and click commit
+        Add a commit message and click Commit
+    Do NOT push (yet)
+
+
+</div>
