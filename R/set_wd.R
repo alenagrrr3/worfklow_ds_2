@@ -28,3 +28,6 @@ fs::dir_tree(("~/Documents/Daur2"))
 
 #20, 21 nov , dataset introduction, first half of fucncitonallity
 #28 29 nov rest funct package
+
+
+

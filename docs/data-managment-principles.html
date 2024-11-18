@@ -23,7 +23,7 @@
 <meta name="author" content="alena savacehnko" />
 
 
-<meta name="date" content="2024-11-14" />
+<meta name="date" content="2024-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -107,6 +107,20 @@
             <section class="normal" id="section-">
 <div id="data-managment-principles" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Data managment principles<a href="data-managment-principles.html#data-managment-principles" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="gray">
+<p>Imagine you receive a file attached to an email from a researcher in your research group called:</p>
+<p>salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx</p>
+<p>The file is located in the course ./data folder.</p>
+<p>Download it here.</p>
+<p>You are requested to run an analysis on the raw data in this file (sheet named ‘All Cycles’). It contains data from a plate reader experiment where wells are measured over time. The researcher asks you to generate a plot per sample. No other information was provided in the original email.</p>
+<p>Describe the following steps in an RMarkdown file. You do not need to write the R code for the actual analysis at this point - we will do that later in another exercise in this lesson. Answer these questions in your markdown file with exercises.</p>
+<pre><code>How would you prepare for this analysis in R/Rstudio?
+Look at the contents of the file, which Excel Worksheet do you need for the analysis?
+Which steps do you need to take to load the data into R
+Which steps do you need to take in reshaping the file to make the dataformat match the requirement for using `{ggplot}
+Think of a better file name
+Write a conceptual and kind and friendly, but clear reply email (in English) to the researcher, where you address the changes that the researcher needs to make to the file in order for you to be able to analyze this data in R.</code></pre>
+</div>
 
 </div>
             </section>
