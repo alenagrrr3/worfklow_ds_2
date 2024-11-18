@@ -25,3 +25,6 @@ fs::dir_tree(("~/Documents/Daur2"))
 
 # img
 # ![half-size image](foo.jpg){#id .class width=50% height=50%}
+
+#20, 21 nov , dataset introduction, first half of fucncitonallity
+#28 29 nov rest funct package

@@ -1,2 +1,2 @@
-let’s create and solve a simple conflict 
+Select the changes you want to commit
 This is a workflow life sciences DSFB2
