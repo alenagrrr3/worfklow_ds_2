@@ -12,3 +12,16 @@ Lesson 2. Git conflict.
 
 
 </div>
+
+ ![git conflict in readme.md](images/img_conflict.png)
+  ![half-size image](images/resolve_conflict.png)
+  
+  
+  
+ <div class="gray"> 
+ 
+ Creating a new development branch.
+Now that you are on the new development branch, you can start changing files. Change some files in any way you like. After you made your changes, you can commit your changes and push the changes to GitHub as explained in the previous section. 
+
+</div>
+
