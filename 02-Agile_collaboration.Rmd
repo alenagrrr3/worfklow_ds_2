@@ -136,6 +136,10 @@ Kanban board
 ![dashboard](images/dashboard.png)
 
 
+![create-milistone](images/test_milistone.png.png)
+
+![create-branch-for-milistone](images/git_checkout_milistone.png)
+
 <h3>  Exercise 2.12 </h3>
 
 <div class="gray">
