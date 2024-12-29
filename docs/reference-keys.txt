@@ -1,12 +1,8 @@
 lesson-1-git-and-github
 agile-collaboration
 data-managment-principles
-the-guerrilla-data_management-principles
 reproducible-research
 working-with-relational-databases
 creating-r-packages
-parameterized-rmarkdown
-r-markdown-syntax-output-formats
-introduction
-rmarkdownsyntax
 parameterized-reports
+rmarkdownsyntax

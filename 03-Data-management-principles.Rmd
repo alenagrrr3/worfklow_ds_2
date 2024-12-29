@@ -1,7 +1,6 @@
 # Data managment principles
 
 
-<div class= "gray">
 
 Imagine you receive a file attached to an email from a researcher in your research group called:
 
@@ -22,18 +21,18 @@ Describe the following steps in an RMarkdown file. You do not need to write the 
     Think of a better file name
     Write a conceptual and kind and friendly, but clear reply email (in English) to the researcher, where you address the changes that the researcher needs to make to the file in order for you to be able to analyze this data in R.
 
-</div>
+
 
 Set meeting per sample per data point in apart column. 
 
-<div class= "gray">
+
 There are actually 4 very similar files lying around.
 
 Download the data here.
 
 Find out which one is different from the other three using their MD5sums. If you want, md5sum can handle multiple files at the same time, but wants full paths for all of them.
 
-</div>
+
 
 
 ```{r}
@@ -55,9 +54,9 @@ md5sums_all %>% select(filename,value)
 ```
 
 
-<div class= "gray">
+
 Determine the md5sums of the file. Save the checksums to a file [write a piece of R code]
-</div>
+
 
 ```{r}
 # calculate md5sums for file "toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv"
@@ -82,9 +81,9 @@ md5sums_toxref %>% # write as dataframe for easy access
 ```
 
 
-<div class= "gray">
+
 Download the md5 file you just generated on the server (or upload the one you generated locally). Can you think of a way to check in an R script whether they are the same? Write the script and save it in a .R file
-</div>
+
 
 
 ```{r}
@@ -111,16 +110,16 @@ md5sums_toxref %>% # write as dataframe for easy access
 ```
 
 
-<div class= "gray">
+
 Now look at your last laboratory project and take a look at your folder structure. Clean it!
-</div>
+
 
 ```{r}
 fs::dir_tree(here::here("data-raw"))
 ```
 
 
-<div class= "gray">
+
  Download it here if you’ve lost it and take a good look at your file management…
 
 Go over the following steps to complete this exercise.
@@ -134,7 +133,7 @@ Go over the following steps to complete this exercise.
     Now join your sample data dataframe to the raw data.
     Export the data as a .csv file.
     Write an appropriate README.txt file that accompanies this exported csv file. Save both in your data folder of your course project. (make this folder if you don’t have it yet).
-    </div>
+
     
     
 ```{r}

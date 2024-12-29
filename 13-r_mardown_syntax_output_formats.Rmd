@@ -1,10 +1,8 @@
 # Rmarkdownsyntax
 
-<div class="gray">
 
 Generate a graph with ggplot (any graph you like, here are some examples) and try some options to make it colourblind-friendly. Test your figure here (Export your graph to jpeg using the export option in Rstudio (bottom right, above the graph) or ggsave() and upload the file to this website.)
 
-</div>
 
 ```{r}
 

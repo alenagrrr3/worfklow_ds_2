@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Creating R packages | worflow DSFB</title>
-  <meta name="description" content="Chapter 7 Creating R packages | worflow DSFB" />
+  <title>Chapter 6 Creating R packages | worflow DSFB</title>
+  <meta name="description" content="Chapter 6 Creating R packages | worflow DSFB" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Creating R packages | worflow DSFB" />
+  <meta property="og:title" content="Chapter 6 Creating R packages | worflow DSFB" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Creating R packages | worflow DSFB" />
+  <meta name="twitter:title" content="Chapter 6 Creating R packages | worflow DSFB" />
   
   
   
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="working-with-relational-databases.html"/>
-<link rel="next" href="parameterized-rmarkdown.html"/>
+<link rel="next" href="parameterized-reports.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -143,13 +143,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Lesson 1 Git and GitHub</a></li>
 <li class="chapter" data-level="2" data-path="agile-collaboration.html"><a href="agile-collaboration.html"><i class="fa fa-check"></i><b>2</b> Agile collaboration</a></li>
 <li class="chapter" data-level="3" data-path="data-managment-principles.html"><a href="data-managment-principles.html"><i class="fa fa-check"></i><b>3</b> Data managment principles</a></li>
-<li class="chapter" data-level="4" data-path="the-guerrilla-data_management-principles.html"><a href="the-guerrilla-data_management-principles.html"><i class="fa fa-check"></i><b>4</b> The Guerrilla Data_management Principles</a></li>
-<li class="chapter" data-level="5" data-path="reproducible-research.html"><a href="reproducible-research.html"><i class="fa fa-check"></i><b>5</b> Reproducible research</a></li>
-<li class="chapter" data-level="6" data-path="working-with-relational-databases.html"><a href="working-with-relational-databases.html"><i class="fa fa-check"></i><b>6</b> Working with relational databases</a></li>
-<li class="chapter" data-level="7" data-path="creating-r-packages.html"><a href="creating-r-packages.html"><i class="fa fa-check"></i><b>7</b> Creating R packages</a></li>
-<li class="chapter" data-level="8" data-path="parameterized-rmarkdown.html"><a href="parameterized-rmarkdown.html"><i class="fa fa-check"></i><b>8</b> parameterized RMarkdown</a></li>
-<li class="chapter" data-level="9" data-path="r-markdown-syntax-output-formats.html"><a href="r-markdown-syntax-output-formats.html"><i class="fa fa-check"></i><b>9</b> R Markdown Syntax Output Formats</a></li>
-<li class="chapter" data-level="10" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>10</b> Introduction</a></li>
+<li class="chapter" data-level="4" data-path="reproducible-research.html"><a href="reproducible-research.html"><i class="fa fa-check"></i><b>4</b> Reproducible research</a></li>
+<li class="chapter" data-level="5" data-path="working-with-relational-databases.html"><a href="working-with-relational-databases.html"><i class="fa fa-check"></i><b>5</b> Working with relational databases</a></li>
+<li class="chapter" data-level="6" data-path="creating-r-packages.html"><a href="creating-r-packages.html"><i class="fa fa-check"></i><b>6</b> Creating R packages</a></li>
+<li class="chapter" data-level="7" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>7</b> Parameterized reports</a></li>
+<li class="chapter" data-level="8" data-path="rmarkdownsyntax.html"><a href="rmarkdownsyntax.html"><i class="fa fa-check"></i><b>8</b> Rmarkdownsyntax</a></li>
 <li class="divider"></li>
 <li><a href="https://alenagrrr3.github.io/worfklow_ds_2/index.html" target="blank">Published with bookdown</a></li>
 </ul>
@@ -169,39 +167,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="creating-r-packages" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Creating R packages<a href="creating-r-packages.html#creating-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="creating-r-packages.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(devtools)</span></code></pre></div>
+<div id="creating-r-packages" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Creating R packages<a href="creating-r-packages.html#creating-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="creating-r-packages.html#cb72-1" tabindex="-1"></a><span class="fu">library</span>(devtools)</span></code></pre></div>
 <pre><code>## Loading required package: usethis</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="creating-r-packages.html#cb3-1" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;devtools&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="creating-r-packages.html#cb74-1" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;devtools&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &#39;2.4.5&#39;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="creating-r-packages.html#cb5-1" tabindex="-1"></a><span class="fu">create_package</span>(<span class="st">&quot;~/path/to/regexcite&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="creating-r-packages.html#cb6-1" tabindex="-1"></a><span class="fu">use_git</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="creating-r-packages.html#cb7-1" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="st">&quot;alfa,bravo,charlie,delta&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="creating-r-packages.html#cb76-1" tabindex="-1"></a><span class="fu">create_package</span>(<span class="st">&quot;~/path/to/regexcite&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="creating-r-packages.html#cb77-1" tabindex="-1"></a><span class="fu">use_git</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="creating-r-packages.html#cb78-1" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="st">&quot;alfa,bravo,charlie,delta&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;alfa,bravo,charlie,delta&quot;</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="creating-r-packages.html#cb9-1" tabindex="-1"></a><span class="co">#&gt; [1] &quot;alfa,bravo,charlie,delta&quot;</span></span>
-<span id="cb9-2"><a href="creating-r-packages.html#cb9-2" tabindex="-1"></a><span class="fu">strsplit</span>(x, <span class="at">split =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="creating-r-packages.html#cb80-1" tabindex="-1"></a><span class="co">#&gt; [1] &quot;alfa,bravo,charlie,delta&quot;</span></span>
+<span id="cb80-2"><a href="creating-r-packages.html#cb80-2" tabindex="-1"></a><span class="fu">strsplit</span>(x, <span class="at">split =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;alfa&quot;    &quot;bravo&quot;   &quot;charlie&quot; &quot;delta&quot;</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="creating-r-packages.html#cb11-1" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">strsplit</span>(x, <span class="at">split =</span> <span class="st">&quot;,&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="creating-r-packages.html#cb82-1" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">strsplit</span>(x, <span class="at">split =</span> <span class="st">&quot;,&quot;</span>))</span></code></pre></div>
 <pre><code>## List of 1
 ##  $ : chr [1:4] &quot;alfa&quot; &quot;bravo&quot; &quot;charlie&quot; &quot;delta&quot;</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="creating-r-packages.html#cb13-1" tabindex="-1"></a><span class="fu">unlist</span>(<span class="fu">strsplit</span>(x, <span class="at">split =</span> <span class="st">&quot;,&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="creating-r-packages.html#cb84-1" tabindex="-1"></a><span class="fu">unlist</span>(<span class="fu">strsplit</span>(x, <span class="at">split =</span> <span class="st">&quot;,&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;alfa&quot;    &quot;bravo&quot;   &quot;charlie&quot; &quot;delta&quot;</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="creating-r-packages.html#cb15-1" tabindex="-1"></a><span class="fu">strsplit</span>(x, <span class="at">split =</span> <span class="st">&quot;,&quot;</span>)[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="creating-r-packages.html#cb86-1" tabindex="-1"></a><span class="fu">strsplit</span>(x, <span class="at">split =</span> <span class="st">&quot;,&quot;</span>)[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## [1] &quot;alfa&quot;    &quot;bravo&quot;   &quot;charlie&quot; &quot;delta&quot;</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="creating-r-packages.html#cb17-1" tabindex="-1"></a>strsplit1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, split) {</span>
-<span id="cb17-2"><a href="creating-r-packages.html#cb17-2" tabindex="-1"></a>  <span class="fu">strsplit</span>(x, <span class="at">split =</span> split)[[<span class="dv">1</span>]]</span>
-<span id="cb17-3"><a href="creating-r-packages.html#cb17-3" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="creating-r-packages.html#cb18-1" tabindex="-1"></a><span class="fu">use_r</span>(<span class="st">&quot;strsplit1&quot;</span>)</span></code></pre></div>
-<pre><code>## ✔ Setting active project to &quot;C:/Users/Mijn-PC/Documents/r/r/worfklow_ds_2&quot;.</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="creating-r-packages.html#cb88-1" tabindex="-1"></a>strsplit1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, split) {</span>
+<span id="cb88-2"><a href="creating-r-packages.html#cb88-2" tabindex="-1"></a>  <span class="fu">strsplit</span>(x, <span class="at">split =</span> split)[[<span class="dv">1</span>]]</span>
+<span id="cb88-3"><a href="creating-r-packages.html#cb88-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="creating-r-packages.html#cb89-1" tabindex="-1"></a><span class="fu">use_r</span>(<span class="st">&quot;strsplit1&quot;</span>)</span></code></pre></div>
+<pre><code>## ✔ Setting active project to
+##   &quot;C:/Users/Mijn-PC/Documents/r/r/worfklow_ds_2&quot;.</code></pre>
 <pre><code>## ☐ Edit &#39;R/strsplit1.R&#39;.</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="creating-r-packages.html#cb21-1" tabindex="-1"></a><span class="fu">load_all</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="creating-r-packages.html#cb22-1" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="st">&quot;alfa,bravo,charlie,delta&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="creating-r-packages.html#cb92-1" tabindex="-1"></a><span class="fu">load_all</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="creating-r-packages.html#cb93-1" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="st">&quot;alfa,bravo,charlie,delta&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;alfa,bravo,charlie,delta&quot;</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="creating-r-packages.html#cb24-1" tabindex="-1"></a><span class="fu">strsplit1</span>(x, <span class="at">split =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="creating-r-packages.html#cb95-1" tabindex="-1"></a><span class="fu">strsplit1</span>(x, <span class="at">split =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;alfa&quot;    &quot;bravo&quot;   &quot;charlie&quot; &quot;delta&quot;</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="creating-r-packages.html#cb26-1" tabindex="-1"></a><span class="fu">check</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="creating-r-packages.html#cb97-1" tabindex="-1"></a><span class="fu">check</span>()</span></code></pre></div>
 
 </div>
             </section>
@@ -210,7 +209,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="working-with-relational-databases.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="parameterized-rmarkdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="parameterized-reports.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

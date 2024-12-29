@@ -1,9 +1,8 @@
 # Agile collaboration
 
-<h3>
-Lesson 2. Git conflict. </h3>
 
-<div class="gray"> 
+Lesson 2. Git conflict. 
+
 
 Lesson 2. Git conflict.
     Change 2 lines in your README.md locally (on your own computer)
@@ -13,16 +12,14 @@ Lesson 2. Git conflict.
     Do NOT push (yet)
 
 
-</div>
 
  ![git conflict in readme.md](images/img_conflict.png)
   ![half-size image](images/resolve_conflict.png)
   
+
+Lesson 2. Exercise 2.1 
   
-<h3>
-Lesson 2. Exercise 2.1 </h3>
-  
- <div class="gray"> 
+
 
     Create a new branch in RStudio.
     Modify the markdown file by adding some additional text. Save the changes and commit/push the changes to GitHub. Go to GitHub and try to find the commits of the new branch.
@@ -30,7 +27,7 @@ Lesson 2. Exercise 2.1 </h3>
     Merge your changes with the main branch by creating and resolving a pull request. In RStudio, switch to the main branch and pull your changes. Does the RMarkdown file now have the changes?
     Delete the local development branch using the command line.
 
-</div>
+
 
  ![git conflict in readme.md](images/create_new_branch.png)
   ![resolve conflict](images/new_branch.png)
@@ -39,7 +36,7 @@ Lesson 2. Exercise 2.1 </h3>
   
 <h3> Exercise 2  </h3>
 
-<div class="gray">  Projecticum repository
+  Projecticum repository
 
 Create one shared Git repository on GitHub for your Projecticum project.
 
@@ -51,7 +48,7 @@ Try working on the same files at the same time in separate branches, and merge y
 
 Try both renaming a file and merge your branches to the main branch. Solve any issues you encounter.
 
-</div>
+
 
 git clone https://github.com/ProjecticumDataScience/minion_seq.git
 
@@ -59,14 +56,14 @@ git clone https://github.com/ProjecticumDataScience/minion_seq.git
   ![projecticum  ProjecticumDataScience](images/minion_seq.png)
   
   
-  <div class="gray">
+
 Exercise 2.3
 
 Study the Github Flow Documentation site mentioned above.
 
 Discuss it with your Projecticum partner. See to it that you two really understand all the steps of the flow mentioned in the documentation.
 
-<div>
+
 
 Git documentation
 
@@ -83,7 +80,7 @@ Plan  for vrije opdracht
  32  vrije opdracht
  
  
-<div class="gray">
+
 
 Exercise 2
 
@@ -96,7 +93,7 @@ Github documentation
     Use the repo within the projecticum organisation, Link this repo to the github project you just created.
 
 
-</div>
+
 
 
 link for proejcticum dashboard:
@@ -107,7 +104,7 @@ https://github.com/orgs/ProjecticumDataScience/projects/36/views/2
   ![dashboard](images/dashboard.png)
 
 
-<div class="gray">
+
 
 To complete this exercise, you need to complete the following steps:
 
@@ -129,7 +126,7 @@ To complete this exercise, you need to complete the following steps:
     Delete the branch related to the issue you just resolved
 
 
-</div>
+
 
 Kanban board
 
@@ -142,7 +139,7 @@ Kanban board
 
 <h3>  Exercise 2.12 </h3>
 
-<div class="gray">
+
 
 Exercise 2
 
@@ -157,7 +154,7 @@ During this course you will collect .Rmd files with the different portfolio exer
     Set the option new_session: yes in your _bookdown.yml or index.Rmd file. This prevent problems down the line.
     Render the book until all errors are solved. You can debug each file and error by looking at the line numbers where the rendering is causing problems.
 
-</div>
+
 
 
 ```{r, eval=FALSE}

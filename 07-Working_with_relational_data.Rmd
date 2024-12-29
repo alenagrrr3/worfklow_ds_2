@@ -78,7 +78,6 @@ penguins %>% mutate(penguin_id = row_number(),.before = species)
 ```
 
 
-<div class= "gray">
 
 Let’s refresh your memory. Take the penguins dataset.
 
@@ -86,7 +85,7 @@ As we all know, Adelie penguins love peanut butter, Chinstrap penguins prefer ch
 
 Here is a table describing food preference:
 
-</div>
+
 
 
 ```{r}
@@ -104,10 +103,9 @@ joined <-  left_join(
 )
 ```
 
-<div class= "gray">
 
 Now make a new tibble containing only the information on penguin species, sex and bill length measured in 2009 using filter and select.
-</div>
+
 #penguins_long_ided
 #species island    sex     year    id bill_length_mm bill_depth_mm
 

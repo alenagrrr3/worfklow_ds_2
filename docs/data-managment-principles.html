@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="agile-collaboration.html"/>
-<link rel="next" href="the-guerrilla-data_management-principles.html"/>
+<link rel="next" href="reproducible-research.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -143,6 +143,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Lesson 1 Git and GitHub</a></li>
 <li class="chapter" data-level="2" data-path="agile-collaboration.html"><a href="agile-collaboration.html"><i class="fa fa-check"></i><b>2</b> Agile collaboration</a></li>
 <li class="chapter" data-level="3" data-path="data-managment-principles.html"><a href="data-managment-principles.html"><i class="fa fa-check"></i><b>3</b> Data managment principles</a></li>
+<li class="chapter" data-level="4" data-path="reproducible-research.html"><a href="reproducible-research.html"><i class="fa fa-check"></i><b>4</b> Reproducible research</a></li>
+<li class="chapter" data-level="5" data-path="working-with-relational-databases.html"><a href="working-with-relational-databases.html"><i class="fa fa-check"></i><b>5</b> Working with relational databases</a></li>
+<li class="chapter" data-level="6" data-path="creating-r-packages.html"><a href="creating-r-packages.html"><i class="fa fa-check"></i><b>6</b> Creating R packages</a></li>
+<li class="chapter" data-level="7" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>7</b> Parameterized reports</a></li>
+<li class="chapter" data-level="8" data-path="rmarkdownsyntax.html"><a href="rmarkdownsyntax.html"><i class="fa fa-check"></i><b>8</b> Rmarkdownsyntax</a></li>
 <li class="divider"></li>
 <li><a href="https://alenagrrr3.github.io/worfklow_ds_2/index.html" target="blank">Published with bookdown</a></li>
 </ul>
@@ -164,7 +169,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="data-managment-principles" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Data managment principles<a href="data-managment-principles.html#data-managment-principles" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="gray">
 <p>Imagine you receive a file attached to an email from a researcher in your research group called:</p>
 <p>salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx</p>
 <p>The file is located in the course ./data folder.</p>
@@ -177,33 +181,30 @@ Which steps do you need to take to load the data into R
 Which steps do you need to take in reshaping the file to make the dataformat match the requirement for using `{ggplot}
 Think of a better file name
 Write a conceptual and kind and friendly, but clear reply email (in English) to the researcher, where you address the changes that the researcher needs to make to the file in order for you to be able to analyze this data in R.</code></pre>
-</div>
 <p>Set meeting per sample per data point in apart column.</p>
-<div class="gray">
 <p>There are actually 4 very similar files lying around.</p>
 <p>Download the data here.</p>
 <p>Find out which one is different from the other three using their MD5sums. If you want, md5sum can handle multiple files at the same time, but wants full paths for all of them.</p>
-</div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data-managment-principles.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
-<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data-managment-principles.html#cb10-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ────
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
 ## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
 ## ✔ purrr     1.0.2     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ─── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data-managment-principles.html#cb4-1" tabindex="-1"></a>myDir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(</span>
-<span id="cb4-2"><a href="data-managment-principles.html#cb4-2" tabindex="-1"></a>    <span class="st">&quot;data-raw&quot;</span>,</span>
-<span id="cb4-3"><a href="data-managment-principles.html#cb4-3" tabindex="-1"></a>    <span class="st">&quot;md5_examples&quot;</span>)</span>
-<span id="cb4-4"><a href="data-managment-principles.html#cb4-4" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="data-managment-principles.html#cb4-5" tabindex="-1"></a>fileNames <span class="ot">&lt;-</span> <span class="fu">list.files</span>(myDir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-6"><a href="data-managment-principles.html#cb4-6" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="data-managment-principles.html#cb4-7" tabindex="-1"></a>tools<span class="sc">::</span><span class="fu">md5sum</span>(<span class="fu">file.path</span>(myDir, fileNames)) <span class="sc">%&gt;%</span> <span class="fu">enframe</span>() <span class="ot">-&gt;</span> md5sums_all</span>
-<span id="cb4-8"><a href="data-managment-principles.html#cb4-8" tabindex="-1"></a>md5sums_all<span class="sc">$</span>filename <span class="ot">&lt;-</span> fileNames</span>
-<span id="cb4-9"><a href="data-managment-principles.html#cb4-9" tabindex="-1"></a>md5sums_all <span class="sc">%&gt;%</span> <span class="fu">select</span>(filename,value)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data-managment-principles.html#cb12-1" tabindex="-1"></a>myDir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb12-2"><a href="data-managment-principles.html#cb12-2" tabindex="-1"></a>    <span class="st">&quot;data-raw&quot;</span>,</span>
+<span id="cb12-3"><a href="data-managment-principles.html#cb12-3" tabindex="-1"></a>    <span class="st">&quot;md5_examples&quot;</span>)</span>
+<span id="cb12-4"><a href="data-managment-principles.html#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="data-managment-principles.html#cb12-5" tabindex="-1"></a>fileNames <span class="ot">&lt;-</span> <span class="fu">list.files</span>(myDir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-6"><a href="data-managment-principles.html#cb12-6" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="data-managment-principles.html#cb12-7" tabindex="-1"></a>tools<span class="sc">::</span><span class="fu">md5sum</span>(<span class="fu">file.path</span>(myDir, fileNames)) <span class="sc">%&gt;%</span> <span class="fu">enframe</span>() <span class="ot">-&gt;</span> md5sums_all</span>
+<span id="cb12-8"><a href="data-managment-principles.html#cb12-8" tabindex="-1"></a>md5sums_all<span class="sc">$</span>filename <span class="ot">&lt;-</span> fileNames</span>
+<span id="cb12-9"><a href="data-managment-principles.html#cb12-9" tabindex="-1"></a>md5sums_all <span class="sc">%&gt;%</span> <span class="fu">select</span>(filename,value)</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 2
 ##   filename                                value                           
 ##   &lt;chr&gt;                                   &lt;chr&gt;                           
@@ -211,51 +212,47 @@ Write a conceptual and kind and friendly, but clear reply email (in English) to 
 ## 2 MD5_exampledata_backupcomputercrash.txt f3d2eeb79b4c24490bf08f483e5cadd3
 ## 3 MD5_exampledata_maybethisone.txt        a331f23fd3586f0100173bd28b1e319c
 ## 4 MD5_exampledata_savethisone.txt         f3d2eeb79b4c24490bf08f483e5cadd3</code></pre>
-<div class="gray">
 <p>Determine the md5sums of the file. Save the checksums to a file [write a piece of R code]</p>
-</div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-managment-principles.html#cb6-1" tabindex="-1"></a><span class="co"># calculate md5sums for file &quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv&quot;</span></span>
-<span id="cb6-2"><a href="data-managment-principles.html#cb6-2" tabindex="-1"></a>tools<span class="sc">::</span><span class="fu">md5sum</span>(</span>
-<span id="cb6-3"><a href="data-managment-principles.html#cb6-3" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
-<span id="cb6-4"><a href="data-managment-principles.html#cb6-4" tabindex="-1"></a>    <span class="st">&quot;data&quot;</span>,</span>
-<span id="cb6-5"><a href="data-managment-principles.html#cb6-5" tabindex="-1"></a>    <span class="st">&quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv&quot;</span></span>
-<span id="cb6-6"><a href="data-managment-principles.html#cb6-6" tabindex="-1"></a>  )</span>
-<span id="cb6-7"><a href="data-managment-principles.html#cb6-7" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-8"><a href="data-managment-principles.html#cb6-8" tabindex="-1"></a>  <span class="fu">enframe</span>() <span class="ot">-&gt;</span> md5sums_toxref</span>
-<span id="cb6-9"><a href="data-managment-principles.html#cb6-9" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="data-managment-principles.html#cb6-10" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="data-managment-principles.html#cb6-11" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="data-managment-principles.html#cb6-12" tabindex="-1"></a>md5sums_toxref <span class="sc">%&gt;%</span> <span class="co"># write as dataframe for easy access</span></span>
-<span id="cb6-13"><a href="data-managment-principles.html#cb6-13" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
-<span id="cb6-14"><a href="data-managment-principles.html#cb6-14" tabindex="-1"></a>    here<span class="sc">::</span><span class="fu">here</span>(</span>
-<span id="cb6-15"><a href="data-managment-principles.html#cb6-15" tabindex="-1"></a>      <span class="st">&quot;data&quot;</span>,</span>
-<span id="cb6-16"><a href="data-managment-principles.html#cb6-16" tabindex="-1"></a>      <span class="st">&quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.md5&quot;</span>)</span>
-<span id="cb6-17"><a href="data-managment-principles.html#cb6-17" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="gray">
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data-managment-principles.html#cb14-1" tabindex="-1"></a><span class="co"># calculate md5sums for file &quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv&quot;</span></span>
+<span id="cb14-2"><a href="data-managment-principles.html#cb14-2" tabindex="-1"></a>tools<span class="sc">::</span><span class="fu">md5sum</span>(</span>
+<span id="cb14-3"><a href="data-managment-principles.html#cb14-3" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb14-4"><a href="data-managment-principles.html#cb14-4" tabindex="-1"></a>    <span class="st">&quot;data&quot;</span>,</span>
+<span id="cb14-5"><a href="data-managment-principles.html#cb14-5" tabindex="-1"></a>    <span class="st">&quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv&quot;</span></span>
+<span id="cb14-6"><a href="data-managment-principles.html#cb14-6" tabindex="-1"></a>  )</span>
+<span id="cb14-7"><a href="data-managment-principles.html#cb14-7" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-8"><a href="data-managment-principles.html#cb14-8" tabindex="-1"></a>  <span class="fu">enframe</span>() <span class="ot">-&gt;</span> md5sums_toxref</span>
+<span id="cb14-9"><a href="data-managment-principles.html#cb14-9" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="data-managment-principles.html#cb14-10" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="data-managment-principles.html#cb14-11" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="data-managment-principles.html#cb14-12" tabindex="-1"></a>md5sums_toxref <span class="sc">%&gt;%</span> <span class="co"># write as dataframe for easy access</span></span>
+<span id="cb14-13"><a href="data-managment-principles.html#cb14-13" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
+<span id="cb14-14"><a href="data-managment-principles.html#cb14-14" tabindex="-1"></a>    here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb14-15"><a href="data-managment-principles.html#cb14-15" tabindex="-1"></a>      <span class="st">&quot;data&quot;</span>,</span>
+<span id="cb14-16"><a href="data-managment-principles.html#cb14-16" tabindex="-1"></a>      <span class="st">&quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.md5&quot;</span>)</span>
+<span id="cb14-17"><a href="data-managment-principles.html#cb14-17" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Download the md5 file you just generated on the server (or upload the one you generated locally). Can you think of a way to check in an R script whether they are the same? Write the script and save it in a .R file</p>
-</div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data-managment-principles.html#cb7-1" tabindex="-1"></a><span class="co"># calculate md5sums for file &quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv&quot;</span></span>
-<span id="cb7-2"><a href="data-managment-principles.html#cb7-2" tabindex="-1"></a>tools<span class="sc">::</span><span class="fu">md5sum</span>(</span>
-<span id="cb7-3"><a href="data-managment-principles.html#cb7-3" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
-<span id="cb7-4"><a href="data-managment-principles.html#cb7-4" tabindex="-1"></a>    <span class="st">&quot;data&quot;</span>,</span>
-<span id="cb7-5"><a href="data-managment-principles.html#cb7-5" tabindex="-1"></a>    <span class="st">&quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv&quot;</span></span>
-<span id="cb7-6"><a href="data-managment-principles.html#cb7-6" tabindex="-1"></a>  )</span>
-<span id="cb7-7"><a href="data-managment-principles.html#cb7-7" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a href="data-managment-principles.html#cb7-8" tabindex="-1"></a>  <span class="fu">enframe</span>() <span class="ot">-&gt;</span> md5sums_toxref</span>
-<span id="cb7-9"><a href="data-managment-principles.html#cb7-9" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="data-managment-principles.html#cb7-10" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="data-managment-principles.html#cb7-11" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="data-managment-principles.html#cb7-12" tabindex="-1"></a>md5sums_toxref <span class="sc">%&gt;%</span> <span class="co"># write as dataframe for easy access</span></span>
-<span id="cb7-13"><a href="data-managment-principles.html#cb7-13" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
-<span id="cb7-14"><a href="data-managment-principles.html#cb7-14" tabindex="-1"></a>    here<span class="sc">::</span><span class="fu">here</span>(</span>
-<span id="cb7-15"><a href="data-managment-principles.html#cb7-15" tabindex="-1"></a>      <span class="st">&quot;data&quot;</span>,</span>
-<span id="cb7-16"><a href="data-managment-principles.html#cb7-16" tabindex="-1"></a>      <span class="st">&quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.md5&quot;</span>)</span>
-<span id="cb7-17"><a href="data-managment-principles.html#cb7-17" tabindex="-1"></a>  )</span></code></pre></div>
-<div class="gray">
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data-managment-principles.html#cb15-1" tabindex="-1"></a><span class="co"># calculate md5sums for file &quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv&quot;</span></span>
+<span id="cb15-2"><a href="data-managment-principles.html#cb15-2" tabindex="-1"></a>tools<span class="sc">::</span><span class="fu">md5sum</span>(</span>
+<span id="cb15-3"><a href="data-managment-principles.html#cb15-3" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb15-4"><a href="data-managment-principles.html#cb15-4" tabindex="-1"></a>    <span class="st">&quot;data&quot;</span>,</span>
+<span id="cb15-5"><a href="data-managment-principles.html#cb15-5" tabindex="-1"></a>    <span class="st">&quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv&quot;</span></span>
+<span id="cb15-6"><a href="data-managment-principles.html#cb15-6" tabindex="-1"></a>  )</span>
+<span id="cb15-7"><a href="data-managment-principles.html#cb15-7" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="data-managment-principles.html#cb15-8" tabindex="-1"></a>  <span class="fu">enframe</span>() <span class="ot">-&gt;</span> md5sums_toxref</span>
+<span id="cb15-9"><a href="data-managment-principles.html#cb15-9" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="data-managment-principles.html#cb15-10" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="data-managment-principles.html#cb15-11" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="data-managment-principles.html#cb15-12" tabindex="-1"></a>md5sums_toxref <span class="sc">%&gt;%</span> <span class="co"># write as dataframe for easy access</span></span>
+<span id="cb15-13"><a href="data-managment-principles.html#cb15-13" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
+<span id="cb15-14"><a href="data-managment-principles.html#cb15-14" tabindex="-1"></a>    here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb15-15"><a href="data-managment-principles.html#cb15-15" tabindex="-1"></a>      <span class="st">&quot;data&quot;</span>,</span>
+<span id="cb15-16"><a href="data-managment-principles.html#cb15-16" tabindex="-1"></a>      <span class="st">&quot;toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.md5&quot;</span>)</span>
+<span id="cb15-17"><a href="data-managment-principles.html#cb15-17" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Now look at your last laboratory project and take a look at your folder structure. Clean it!</p>
-</div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data-managment-principles.html#cb8-1" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_tree</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="data-managment-principles.html#cb16-1" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_tree</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>))</span></code></pre></div>
 <pre><code>## C:/Users/Mijn-PC/Documents/r/r/worfklow_ds_2/data-raw
+## ├── 13059_2016_1044_MOESM1_ESM.xlsx
+## ├── install.R
 ## ├── md5_examples
 ## │   ├── MD5_exampledata_1.txt
 ## │   ├── MD5_exampledata_backupcomputercrash.txt
@@ -272,7 +269,6 @@ Write a conceptual and kind and friendly, but clear reply email (in English) to 
 ## │   └── media-5 (1).xlsx
 ## ├── toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv
 ## └── ~$salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx</code></pre>
-<div class="gray">
 <p>Download it here if you’ve lost it and take a good look at your file management…</p>
 <p>Go over the following steps to complete this exercise.</p>
 <pre><code>Review your answers to the previous exercise where we used this file in this lesson.
@@ -283,16 +279,15 @@ What shape of formatting would you say this data is in? Is the data tidy?
 Write a piece of code that creates a tidy format of this data. You also need to take a look a the sheet called layout to get information on the samples. Try generating a manual data frame that has 96 rows and a code for each sample. The experiment has been performed in duplo, so for each experimental condition there are two samples.
 Now join your sample data dataframe to the raw data.
 Export the data as a .csv file.
-Write an appropriate README.txt file that accompanies this exported csv file. Save both in your data folder of your course project. (make this folder if you don’t have it yet).
-&lt;/div&gt;</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data-managment-principles.html#cb11-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb11-2"><a href="data-managment-principles.html#cb11-2" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="data-managment-principles.html#cb11-3" tabindex="-1"></a>data_platereader <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(</span>
-<span id="cb11-4"><a href="data-managment-principles.html#cb11-4" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
-<span id="cb11-5"><a href="data-managment-principles.html#cb11-5" tabindex="-1"></a>    <span class="st">&quot;data-raw&quot;</span>,</span>
-<span id="cb11-6"><a href="data-managment-principles.html#cb11-6" tabindex="-1"></a>    <span class="st">&quot;salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx&quot;</span></span>
-<span id="cb11-7"><a href="data-managment-principles.html#cb11-7" tabindex="-1"></a>  ), <span class="at">sheet =</span> <span class="st">&quot;All Cycles&quot;</span></span>
-<span id="cb11-8"><a href="data-managment-principles.html#cb11-8" tabindex="-1"></a>)</span></code></pre></div>
+Write an appropriate README.txt file that accompanies this exported csv file. Save both in your data folder of your course project. (make this folder if you don’t have it yet).</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="data-managment-principles.html#cb19-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb19-2"><a href="data-managment-principles.html#cb19-2" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="data-managment-principles.html#cb19-3" tabindex="-1"></a>data_platereader <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(</span>
+<span id="cb19-4"><a href="data-managment-principles.html#cb19-4" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb19-5"><a href="data-managment-principles.html#cb19-5" tabindex="-1"></a>    <span class="st">&quot;data-raw&quot;</span>,</span>
+<span id="cb19-6"><a href="data-managment-principles.html#cb19-6" tabindex="-1"></a>    <span class="st">&quot;salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx&quot;</span></span>
+<span id="cb19-7"><a href="data-managment-principles.html#cb19-7" tabindex="-1"></a>  ), <span class="at">sheet =</span> <span class="st">&quot;All Cycles&quot;</span></span>
+<span id="cb19-8"><a href="data-managment-principles.html#cb19-8" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## New names:
 ## • `` -&gt; `...2`
 ## • `` -&gt; `...3`
@@ -585,26 +580,26 @@ Write an appropriate README.txt file that accompanies this exported csv file. Sa
 ## • `` -&gt; `...290`
 ## • `` -&gt; `...291`
 ## • `` -&gt; `...292`</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data-managment-principles.html#cb13-1" tabindex="-1"></a><span class="do">## this data looks mangled because of several things: </span></span>
-<span id="cb13-2"><a href="data-managment-principles.html#cb13-2" tabindex="-1"></a><span class="co"># there is some metadata in the top region of the sheet</span></span>
-<span id="cb13-3"><a href="data-managment-principles.html#cb13-3" tabindex="-1"></a><span class="co"># there is a weird looking headers (two headers?)</span></span>
-<span id="cb13-4"><a href="data-managment-principles.html#cb13-4" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="data-managment-principles.html#cb13-5" tabindex="-1"></a><span class="do">## trying skip</span></span>
-<span id="cb13-6"><a href="data-managment-principles.html#cb13-6" tabindex="-1"></a>data_platereader <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(</span>
-<span id="cb13-7"><a href="data-managment-principles.html#cb13-7" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
-<span id="cb13-8"><a href="data-managment-principles.html#cb13-8" tabindex="-1"></a>    <span class="st">&quot;data-raw&quot;</span>,</span>
-<span id="cb13-9"><a href="data-managment-principles.html#cb13-9" tabindex="-1"></a>    <span class="st">&quot;salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx&quot;</span></span>
-<span id="cb13-10"><a href="data-managment-principles.html#cb13-10" tabindex="-1"></a>  ), <span class="at">sheet =</span> <span class="st">&quot;All Cycles&quot;</span>, <span class="at">skip =</span> <span class="dv">11</span></span>
-<span id="cb13-11"><a href="data-managment-principles.html#cb13-11" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-managment-principles.html#cb21-1" tabindex="-1"></a><span class="do">## this data looks mangled because of several things: </span></span>
+<span id="cb21-2"><a href="data-managment-principles.html#cb21-2" tabindex="-1"></a><span class="co"># there is some metadata in the top region of the sheet</span></span>
+<span id="cb21-3"><a href="data-managment-principles.html#cb21-3" tabindex="-1"></a><span class="co"># there is a weird looking headers (two headers?)</span></span>
+<span id="cb21-4"><a href="data-managment-principles.html#cb21-4" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="data-managment-principles.html#cb21-5" tabindex="-1"></a><span class="do">## trying skip</span></span>
+<span id="cb21-6"><a href="data-managment-principles.html#cb21-6" tabindex="-1"></a>data_platereader <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(</span>
+<span id="cb21-7"><a href="data-managment-principles.html#cb21-7" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb21-8"><a href="data-managment-principles.html#cb21-8" tabindex="-1"></a>    <span class="st">&quot;data-raw&quot;</span>,</span>
+<span id="cb21-9"><a href="data-managment-principles.html#cb21-9" tabindex="-1"></a>    <span class="st">&quot;salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx&quot;</span></span>
+<span id="cb21-10"><a href="data-managment-principles.html#cb21-10" tabindex="-1"></a>  ), <span class="at">sheet =</span> <span class="st">&quot;All Cycles&quot;</span>, <span class="at">skip =</span> <span class="dv">11</span></span>
+<span id="cb21-11"><a href="data-managment-principles.html#cb21-11" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## New names:
 ## • `` -&gt; `...1`</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data-managment-principles.html#cb15-1" tabindex="-1"></a><span class="do">## clean up and fix names</span></span>
-<span id="cb15-2"><a href="data-managment-principles.html#cb15-2" tabindex="-1"></a>data_platereader <span class="ot">&lt;-</span> data_platereader <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="data-managment-principles.html#cb15-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample =</span> Time, <span class="at">well =</span> ...<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a href="data-managment-principles.html#cb15-4" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb15-5"><a href="data-managment-principles.html#cb15-5" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="data-managment-principles.html#cb15-6" tabindex="-1"></a><span class="do">## which wells have data?</span></span>
-<span id="cb15-7"><a href="data-managment-principles.html#cb15-7" tabindex="-1"></a><span class="fu">unique</span>(data_platereader<span class="sc">$</span>well)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-managment-principles.html#cb23-1" tabindex="-1"></a><span class="do">## clean up and fix names</span></span>
+<span id="cb23-2"><a href="data-managment-principles.html#cb23-2" tabindex="-1"></a>data_platereader <span class="ot">&lt;-</span> data_platereader <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="data-managment-principles.html#cb23-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample =</span> Time, <span class="at">well =</span> ...<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="data-managment-principles.html#cb23-4" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb23-5"><a href="data-managment-principles.html#cb23-5" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="data-managment-principles.html#cb23-6" tabindex="-1"></a><span class="do">## which wells have data?</span></span>
+<span id="cb23-7"><a href="data-managment-principles.html#cb23-7" tabindex="-1"></a><span class="fu">unique</span>(data_platereader<span class="sc">$</span>well)</span></code></pre></div>
 <pre><code>##  [1] &quot;A01&quot; &quot;A02&quot; &quot;A03&quot; &quot;A04&quot; &quot;A05&quot; &quot;A06&quot; &quot;A07&quot; &quot;A08&quot; &quot;A09&quot; &quot;A10&quot; &quot;A11&quot; &quot;A12&quot;
 ## [13] &quot;B01&quot; &quot;B02&quot; &quot;B03&quot; &quot;B04&quot; &quot;B05&quot; &quot;B06&quot; &quot;B07&quot; &quot;B08&quot; &quot;B09&quot; &quot;B10&quot; &quot;B11&quot; &quot;B12&quot;
 ## [25] &quot;C01&quot; &quot;C02&quot; &quot;C03&quot; &quot;C04&quot; &quot;C05&quot; &quot;C06&quot; &quot;C07&quot; &quot;C08&quot; &quot;C09&quot; &quot;C10&quot; &quot;C11&quot; &quot;C12&quot;
@@ -613,20 +608,20 @@ Write an appropriate README.txt file that accompanies this exported csv file. Sa
 ## [61] &quot;F01&quot; &quot;F02&quot; &quot;F03&quot; &quot;F04&quot; &quot;F05&quot; &quot;F06&quot; &quot;F07&quot; &quot;F08&quot; &quot;F09&quot; &quot;F10&quot; &quot;F11&quot; &quot;F12&quot;
 ## [73] &quot;G01&quot; &quot;G02&quot; &quot;G03&quot; &quot;G04&quot; &quot;G05&quot; &quot;G06&quot; &quot;G07&quot; &quot;G08&quot; &quot;G09&quot; &quot;G10&quot; &quot;G11&quot; &quot;G12&quot;
 ## [85] &quot;H01&quot; &quot;H02&quot; &quot;H03&quot; &quot;H04&quot; &quot;H05&quot; &quot;H06&quot; &quot;H07&quot; &quot;H08&quot; &quot;H09&quot; &quot;H10&quot; &quot;H11&quot; &quot;H12&quot;</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="data-managment-principles.html#cb17-1" tabindex="-1"></a><span class="do">## create sample table</span></span>
-<span id="cb17-2"><a href="data-managment-principles.html#cb17-2" tabindex="-1"></a>sample_names <span class="ot">&lt;-</span> data_platereader<span class="sc">$</span>sample</span>
-<span id="cb17-3"><a href="data-managment-principles.html#cb17-3" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="data-managment-principles.html#cb17-4" tabindex="-1"></a>mv_utr_tx100 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;mv&quot;</span>, <span class="st">&quot;mv&quot;</span>, <span class="st">&quot;mv&quot;</span>, <span class="st">&quot;mv&quot;</span>, </span>
-<span id="cb17-5"><a href="data-managment-principles.html#cb17-5" tabindex="-1"></a>                      <span class="st">&quot;untr&quot;</span>, <span class="st">&quot;untr&quot;</span>, <span class="st">&quot;untr&quot;</span>, <span class="st">&quot;untr&quot;</span>, <span class="st">&quot;untr&quot;</span>,</span>
-<span id="cb17-6"><a href="data-managment-principles.html#cb17-6" tabindex="-1"></a>                      <span class="st">&quot;tx100&quot;</span>, <span class="st">&quot;tx100&quot;</span>, <span class="st">&quot;tx100&quot;</span>), <span class="at">times =</span> <span class="dv">8</span>)</span>
-<span id="cb17-7"><a href="data-managment-principles.html#cb17-7" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="data-managment-principles.html#cb17-8" tabindex="-1"></a>salmonella <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(</span>
-<span id="cb17-9"><a href="data-managment-principles.html#cb17-9" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
-<span id="cb17-10"><a href="data-managment-principles.html#cb17-10" tabindex="-1"></a>    <span class="st">&quot;data-raw&quot;</span>,</span>
-<span id="cb17-11"><a href="data-managment-principles.html#cb17-11" tabindex="-1"></a>    <span class="st">&quot;salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx&quot;</span></span>
-<span id="cb17-12"><a href="data-managment-principles.html#cb17-12" tabindex="-1"></a>  ), <span class="at">sheet =</span> <span class="st">&quot;layout&quot;</span>, <span class="at">range =</span> <span class="st">&quot;C5:N13&quot;</span></span>
-<span id="cb17-13"><a href="data-managment-principles.html#cb17-13" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-14"><a href="data-managment-principles.html#cb17-14" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-managment-principles.html#cb25-1" tabindex="-1"></a><span class="do">## create sample table</span></span>
+<span id="cb25-2"><a href="data-managment-principles.html#cb25-2" tabindex="-1"></a>sample_names <span class="ot">&lt;-</span> data_platereader<span class="sc">$</span>sample</span>
+<span id="cb25-3"><a href="data-managment-principles.html#cb25-3" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="data-managment-principles.html#cb25-4" tabindex="-1"></a>mv_utr_tx100 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;mv&quot;</span>, <span class="st">&quot;mv&quot;</span>, <span class="st">&quot;mv&quot;</span>, <span class="st">&quot;mv&quot;</span>, </span>
+<span id="cb25-5"><a href="data-managment-principles.html#cb25-5" tabindex="-1"></a>                      <span class="st">&quot;untr&quot;</span>, <span class="st">&quot;untr&quot;</span>, <span class="st">&quot;untr&quot;</span>, <span class="st">&quot;untr&quot;</span>, <span class="st">&quot;untr&quot;</span>,</span>
+<span id="cb25-6"><a href="data-managment-principles.html#cb25-6" tabindex="-1"></a>                      <span class="st">&quot;tx100&quot;</span>, <span class="st">&quot;tx100&quot;</span>, <span class="st">&quot;tx100&quot;</span>), <span class="at">times =</span> <span class="dv">8</span>)</span>
+<span id="cb25-7"><a href="data-managment-principles.html#cb25-7" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="data-managment-principles.html#cb25-8" tabindex="-1"></a>salmonella <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(</span>
+<span id="cb25-9"><a href="data-managment-principles.html#cb25-9" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb25-10"><a href="data-managment-principles.html#cb25-10" tabindex="-1"></a>    <span class="st">&quot;data-raw&quot;</span>,</span>
+<span id="cb25-11"><a href="data-managment-principles.html#cb25-11" tabindex="-1"></a>    <span class="st">&quot;salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx&quot;</span></span>
+<span id="cb25-12"><a href="data-managment-principles.html#cb25-12" tabindex="-1"></a>  ), <span class="at">sheet =</span> <span class="st">&quot;layout&quot;</span>, <span class="at">range =</span> <span class="st">&quot;C5:N13&quot;</span></span>
+<span id="cb25-13"><a href="data-managment-principles.html#cb25-13" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-14"><a href="data-managment-principles.html#cb25-14" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() </span></code></pre></div>
 <pre><code>## New names:
 ## • `ul sal` -&gt; `ul sal...1`
 ## • `ul sal` -&gt; `ul sal...2`
@@ -640,11 +635,11 @@ Write an appropriate README.txt file that accompanies this exported csv file. Sa
 ## • `ul sal` -&gt; `ul sal...10`
 ## • `ul sal` -&gt; `ul sal...11`
 ## • `ul sal` -&gt; `ul sal...12`</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="data-managment-principles.html#cb19-1" tabindex="-1"></a><span class="co"># cheack data types</span></span>
-<span id="cb19-2"><a href="data-managment-principles.html#cb19-2" tabindex="-1"></a><span class="fu">map</span>(</span>
-<span id="cb19-3"><a href="data-managment-principles.html#cb19-3" tabindex="-1"></a>  <span class="at">.x =</span> salmonella,</span>
-<span id="cb19-4"><a href="data-managment-principles.html#cb19-4" tabindex="-1"></a>  typeof</span>
-<span id="cb19-5"><a href="data-managment-principles.html#cb19-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="data-managment-principles.html#cb27-1" tabindex="-1"></a><span class="co"># cheack data types</span></span>
+<span id="cb27-2"><a href="data-managment-principles.html#cb27-2" tabindex="-1"></a><span class="fu">map</span>(</span>
+<span id="cb27-3"><a href="data-managment-principles.html#cb27-3" tabindex="-1"></a>  <span class="at">.x =</span> salmonella,</span>
+<span id="cb27-4"><a href="data-managment-principles.html#cb27-4" tabindex="-1"></a>  typeof</span>
+<span id="cb27-5"><a href="data-managment-principles.html#cb27-5" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## $ul_sal_1
 ## [1] &quot;double&quot;
 ## 
@@ -680,92 +675,95 @@ Write an appropriate README.txt file that accompanies this exported csv file. Sa
 ## 
 ## $ul_sal_12
 ## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-managment-principles.html#cb21-1" tabindex="-1"></a>salmonella <span class="ot">&lt;-</span> salmonella <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="data-managment-principles.html#cb21-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(ul_sal_1<span class="sc">:</span>ul_sal_12,</span>
-<span id="cb21-3"><a href="data-managment-principles.html#cb21-3" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;plate_column&quot;</span>, </span>
-<span id="cb21-4"><a href="data-managment-principles.html#cb21-4" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;microliters_bacteria&quot;</span>)</span>
-<span id="cb21-5"><a href="data-managment-principles.html#cb21-5" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="data-managment-principles.html#cb21-6" tabindex="-1"></a><span class="do">## synthesize to sample table</span></span>
-<span id="cb21-7"><a href="data-managment-principles.html#cb21-7" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="data-managment-principles.html#cb21-8" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb21-9"><a href="data-managment-principles.html#cb21-9" tabindex="-1"></a>  <span class="at">well =</span> data_platereader<span class="sc">$</span>well,  </span>
-<span id="cb21-10"><a href="data-managment-principles.html#cb21-10" tabindex="-1"></a>  <span class="at">sample =</span> sample_names,</span>
-<span id="cb21-11"><a href="data-managment-principles.html#cb21-11" tabindex="-1"></a>  <span class="at">condition =</span> mv_utr_tx100,</span>
-<span id="cb21-12"><a href="data-managment-principles.html#cb21-12" tabindex="-1"></a>  <span class="at">ul_salmonella =</span> salmonella<span class="sc">$</span>microliters_bacteria</span>
-<span id="cb21-13"><a href="data-managment-principles.html#cb21-13" tabindex="-1"></a>)</span>
-<span id="cb21-14"><a href="data-managment-principles.html#cb21-14" tabindex="-1"></a></span>
-<span id="cb21-15"><a href="data-managment-principles.html#cb21-15" tabindex="-1"></a><span class="do">## join sample table with data</span></span>
-<span id="cb21-16"><a href="data-managment-principles.html#cb21-16" tabindex="-1"></a>data_join <span class="ot">&lt;-</span> <span class="fu">left_join</span>(samples, data_platereader)</span></code></pre></div>
-<pre><code>## Joining with `by = join_by(well, sample)`</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-managment-principles.html#cb23-1" tabindex="-1"></a><span class="do">## create tidy version</span></span>
-<span id="cb23-2"><a href="data-managment-principles.html#cb23-2" tabindex="-1"></a>data_tidy <span class="ot">&lt;-</span> data_join <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="data-managment-principles.html#cb23-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb23-4"><a href="data-managment-principles.html#cb23-4" tabindex="-1"></a>    x0_h<span class="sc">:</span>x24_h_5_min,</span>
-<span id="cb23-5"><a href="data-managment-principles.html#cb23-5" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
-<span id="cb23-6"><a href="data-managment-principles.html#cb23-6" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span></span>
-<span id="cb23-7"><a href="data-managment-principles.html#cb23-7" tabindex="-1"></a>  )</span>
-<span id="cb23-8"><a href="data-managment-principles.html#cb23-8" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="data-managment-principles.html#cb23-9" tabindex="-1"></a><span class="do">## fix time variable</span></span>
-<span id="cb23-10"><a href="data-managment-principles.html#cb23-10" tabindex="-1"></a>data_tidy_time <span class="ot">&lt;-</span> data_tidy <span class="sc">%&gt;%</span></span>
-<span id="cb23-11"><a href="data-managment-principles.html#cb23-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_var =</span></span>
-<span id="cb23-12"><a href="data-managment-principles.html#cb23-12" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(</span>
-<span id="cb23-13"><a href="data-managment-principles.html#cb23-13" tabindex="-1"></a>    <span class="at">string =</span> time,</span>
-<span id="cb23-14"><a href="data-managment-principles.html#cb23-14" tabindex="-1"></a>    <span class="at">pattern =</span> <span class="st">&quot;x&quot;</span>,</span>
-<span id="cb23-15"><a href="data-managment-principles.html#cb23-15" tabindex="-1"></a>    <span class="at">replacement =</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb23-16"><a href="data-managment-principles.html#cb23-16" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
-<span id="cb23-17"><a href="data-managment-principles.html#cb23-17" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_var =</span></span>
-<span id="cb23-18"><a href="data-managment-principles.html#cb23-18" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(</span>
-<span id="cb23-19"><a href="data-managment-principles.html#cb23-19" tabindex="-1"></a>    <span class="at">string =</span> time_var,</span>
-<span id="cb23-20"><a href="data-managment-principles.html#cb23-20" tabindex="-1"></a>    <span class="at">pattern =</span> <span class="st">&quot;_&quot;</span>,</span>
-<span id="cb23-21"><a href="data-managment-principles.html#cb23-21" tabindex="-1"></a>    <span class="at">replacement =</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb23-22"><a href="data-managment-principles.html#cb23-22" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
-<span id="cb23-23"><a href="data-managment-principles.html#cb23-23" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_var =</span></span>
-<span id="cb23-24"><a href="data-managment-principles.html#cb23-24" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(</span>
-<span id="cb23-25"><a href="data-managment-principles.html#cb23-25" tabindex="-1"></a>    <span class="at">string =</span> time_var,</span>
-<span id="cb23-26"><a href="data-managment-principles.html#cb23-26" tabindex="-1"></a>    <span class="at">pattern =</span> <span class="st">&quot;h&quot;</span>,</span>
-<span id="cb23-27"><a href="data-managment-principles.html#cb23-27" tabindex="-1"></a>    <span class="at">replacement =</span> <span class="st">&quot;:&quot;</span></span>
-<span id="cb23-28"><a href="data-managment-principles.html#cb23-28" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
-<span id="cb23-29"><a href="data-managment-principles.html#cb23-29" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_var =</span></span>
-<span id="cb23-30"><a href="data-managment-principles.html#cb23-30" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(</span>
-<span id="cb23-31"><a href="data-managment-principles.html#cb23-31" tabindex="-1"></a>    <span class="at">string =</span> time_var,</span>
-<span id="cb23-32"><a href="data-managment-principles.html#cb23-32" tabindex="-1"></a>    <span class="at">pattern =</span> <span class="st">&quot;min&quot;</span>,</span>
-<span id="cb23-33"><a href="data-managment-principles.html#cb23-33" tabindex="-1"></a>    <span class="at">replacement =</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb23-34"><a href="data-managment-principles.html#cb23-34" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
-<span id="cb23-35"><a href="data-managment-principles.html#cb23-35" tabindex="-1"></a>  <span class="fu">separate</span>(</span>
-<span id="cb23-36"><a href="data-managment-principles.html#cb23-36" tabindex="-1"></a>    <span class="at">col =</span> time_var,</span>
-<span id="cb23-37"><a href="data-managment-principles.html#cb23-37" tabindex="-1"></a>    <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;hours&quot;</span>, <span class="st">&quot;minutes&quot;</span>),</span>
-<span id="cb23-38"><a href="data-managment-principles.html#cb23-38" tabindex="-1"></a>    <span class="at">remove =</span> <span class="cn">FALSE</span></span>
-<span id="cb23-39"><a href="data-managment-principles.html#cb23-39" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb23-40"><a href="data-managment-principles.html#cb23-40" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb23-41"><a href="data-managment-principles.html#cb23-41" tabindex="-1"></a>    <span class="at">minutes =</span> <span class="fu">ifelse</span>(minutes <span class="sc">==</span> <span class="st">&quot;&quot;</span>, <span class="st">&quot;0&quot;</span>, minutes)</span>
-<span id="cb23-42"><a href="data-managment-principles.html#cb23-42" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb23-43"><a href="data-managment-principles.html#cb23-43" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">minutes_passed =</span> <span class="dv">60</span><span class="sc">*</span><span class="fu">as.numeric</span>(hours) <span class="sc">+</span> <span class="fu">as.numeric</span>(minutes))</span>
-<span id="cb23-44"><a href="data-managment-principles.html#cb23-44" tabindex="-1"></a></span>
-<span id="cb23-45"><a href="data-managment-principles.html#cb23-45" tabindex="-1"></a><span class="do">## misingness</span></span>
-<span id="cb23-46"><a href="data-managment-principles.html#cb23-46" tabindex="-1"></a>data_tidy <span class="sc">%&gt;%</span></span>
-<span id="cb23-47"><a href="data-managment-principles.html#cb23-47" tabindex="-1"></a>  naniar<span class="sc">::</span><span class="fu">vis_miss</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-managment-principles.html#cb24-1" tabindex="-1"></a><span class="do">## graphs</span></span>
-<span id="cb24-2"><a href="data-managment-principles.html#cb24-2" tabindex="-1"></a>data_tidy_time <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="data-managment-principles.html#cb24-3" tabindex="-1"></a>  <span class="fu">group_by</span>(condition, ul_salmonella, minutes_passed) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="data-managment-principles.html#cb24-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_value =</span> <span class="fu">mean</span>(value)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-5"><a href="data-managment-principles.html#cb24-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ul_salmonella =</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(ul_salmonella), <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-6"><a href="data-managment-principles.html#cb24-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minutes_passed, <span class="at">y =</span> mean_value)) <span class="sc">+</span></span>
-<span id="cb24-7"><a href="data-managment-principles.html#cb24-7" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">colour =</span> condition), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb24-8"><a href="data-managment-principles.html#cb24-8" tabindex="-1"></a>  <span class="fu">facet_grid</span>(condition <span class="sc">~</span> ul_salmonella) <span class="sc">+</span></span>
-<span id="cb24-9"><a href="data-managment-principles.html#cb24-9" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Time passed (minutes)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb24-10"><a href="data-managment-principles.html#cb24-10" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Mean AU&quot;</span>)</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;condition&#39;, &#39;ul_salmonella&#39;. You can
-## override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-managment-principles.html#cb29-1" tabindex="-1"></a>salmonella <span class="ot">&lt;-</span> salmonella <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="data-managment-principles.html#cb29-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(ul_sal_1<span class="sc">:</span>ul_sal_12,</span>
+<span id="cb29-3"><a href="data-managment-principles.html#cb29-3" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;plate_column&quot;</span>, </span>
+<span id="cb29-4"><a href="data-managment-principles.html#cb29-4" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;microliters_bacteria&quot;</span>)</span>
+<span id="cb29-5"><a href="data-managment-principles.html#cb29-5" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="data-managment-principles.html#cb29-6" tabindex="-1"></a><span class="do">## synthesize to sample table</span></span>
+<span id="cb29-7"><a href="data-managment-principles.html#cb29-7" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="data-managment-principles.html#cb29-8" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb29-9"><a href="data-managment-principles.html#cb29-9" tabindex="-1"></a>  <span class="at">well =</span> data_platereader<span class="sc">$</span>well,  </span>
+<span id="cb29-10"><a href="data-managment-principles.html#cb29-10" tabindex="-1"></a>  <span class="at">sample =</span> sample_names,</span>
+<span id="cb29-11"><a href="data-managment-principles.html#cb29-11" tabindex="-1"></a>  <span class="at">condition =</span> mv_utr_tx100,</span>
+<span id="cb29-12"><a href="data-managment-principles.html#cb29-12" tabindex="-1"></a>  <span class="at">ul_salmonella =</span> salmonella<span class="sc">$</span>microliters_bacteria</span>
+<span id="cb29-13"><a href="data-managment-principles.html#cb29-13" tabindex="-1"></a>)</span>
+<span id="cb29-14"><a href="data-managment-principles.html#cb29-14" tabindex="-1"></a></span>
+<span id="cb29-15"><a href="data-managment-principles.html#cb29-15" tabindex="-1"></a><span class="do">## join sample table with data</span></span>
+<span id="cb29-16"><a href="data-managment-principles.html#cb29-16" tabindex="-1"></a>data_join <span class="ot">&lt;-</span> <span class="fu">left_join</span>(samples, data_platereader)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(well,
+## sample)`</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-managment-principles.html#cb31-1" tabindex="-1"></a><span class="do">## create tidy version</span></span>
+<span id="cb31-2"><a href="data-managment-principles.html#cb31-2" tabindex="-1"></a>data_tidy <span class="ot">&lt;-</span> data_join <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="data-managment-principles.html#cb31-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb31-4"><a href="data-managment-principles.html#cb31-4" tabindex="-1"></a>    x0_h<span class="sc">:</span>x24_h_5_min,</span>
+<span id="cb31-5"><a href="data-managment-principles.html#cb31-5" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>,</span>
+<span id="cb31-6"><a href="data-managment-principles.html#cb31-6" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span></span>
+<span id="cb31-7"><a href="data-managment-principles.html#cb31-7" tabindex="-1"></a>  )</span>
+<span id="cb31-8"><a href="data-managment-principles.html#cb31-8" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="data-managment-principles.html#cb31-9" tabindex="-1"></a><span class="do">## fix time variable</span></span>
+<span id="cb31-10"><a href="data-managment-principles.html#cb31-10" tabindex="-1"></a>data_tidy_time <span class="ot">&lt;-</span> data_tidy <span class="sc">%&gt;%</span></span>
+<span id="cb31-11"><a href="data-managment-principles.html#cb31-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_var =</span></span>
+<span id="cb31-12"><a href="data-managment-principles.html#cb31-12" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(</span>
+<span id="cb31-13"><a href="data-managment-principles.html#cb31-13" tabindex="-1"></a>    <span class="at">string =</span> time,</span>
+<span id="cb31-14"><a href="data-managment-principles.html#cb31-14" tabindex="-1"></a>    <span class="at">pattern =</span> <span class="st">&quot;x&quot;</span>,</span>
+<span id="cb31-15"><a href="data-managment-principles.html#cb31-15" tabindex="-1"></a>    <span class="at">replacement =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb31-16"><a href="data-managment-principles.html#cb31-16" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb31-17"><a href="data-managment-principles.html#cb31-17" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_var =</span></span>
+<span id="cb31-18"><a href="data-managment-principles.html#cb31-18" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(</span>
+<span id="cb31-19"><a href="data-managment-principles.html#cb31-19" tabindex="-1"></a>    <span class="at">string =</span> time_var,</span>
+<span id="cb31-20"><a href="data-managment-principles.html#cb31-20" tabindex="-1"></a>    <span class="at">pattern =</span> <span class="st">&quot;_&quot;</span>,</span>
+<span id="cb31-21"><a href="data-managment-principles.html#cb31-21" tabindex="-1"></a>    <span class="at">replacement =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb31-22"><a href="data-managment-principles.html#cb31-22" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb31-23"><a href="data-managment-principles.html#cb31-23" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_var =</span></span>
+<span id="cb31-24"><a href="data-managment-principles.html#cb31-24" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(</span>
+<span id="cb31-25"><a href="data-managment-principles.html#cb31-25" tabindex="-1"></a>    <span class="at">string =</span> time_var,</span>
+<span id="cb31-26"><a href="data-managment-principles.html#cb31-26" tabindex="-1"></a>    <span class="at">pattern =</span> <span class="st">&quot;h&quot;</span>,</span>
+<span id="cb31-27"><a href="data-managment-principles.html#cb31-27" tabindex="-1"></a>    <span class="at">replacement =</span> <span class="st">&quot;:&quot;</span></span>
+<span id="cb31-28"><a href="data-managment-principles.html#cb31-28" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb31-29"><a href="data-managment-principles.html#cb31-29" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_var =</span></span>
+<span id="cb31-30"><a href="data-managment-principles.html#cb31-30" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(</span>
+<span id="cb31-31"><a href="data-managment-principles.html#cb31-31" tabindex="-1"></a>    <span class="at">string =</span> time_var,</span>
+<span id="cb31-32"><a href="data-managment-principles.html#cb31-32" tabindex="-1"></a>    <span class="at">pattern =</span> <span class="st">&quot;min&quot;</span>,</span>
+<span id="cb31-33"><a href="data-managment-principles.html#cb31-33" tabindex="-1"></a>    <span class="at">replacement =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb31-34"><a href="data-managment-principles.html#cb31-34" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb31-35"><a href="data-managment-principles.html#cb31-35" tabindex="-1"></a>  <span class="fu">separate</span>(</span>
+<span id="cb31-36"><a href="data-managment-principles.html#cb31-36" tabindex="-1"></a>    <span class="at">col =</span> time_var,</span>
+<span id="cb31-37"><a href="data-managment-principles.html#cb31-37" tabindex="-1"></a>    <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;hours&quot;</span>, <span class="st">&quot;minutes&quot;</span>),</span>
+<span id="cb31-38"><a href="data-managment-principles.html#cb31-38" tabindex="-1"></a>    <span class="at">remove =</span> <span class="cn">FALSE</span></span>
+<span id="cb31-39"><a href="data-managment-principles.html#cb31-39" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb31-40"><a href="data-managment-principles.html#cb31-40" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb31-41"><a href="data-managment-principles.html#cb31-41" tabindex="-1"></a>    <span class="at">minutes =</span> <span class="fu">ifelse</span>(minutes <span class="sc">==</span> <span class="st">&quot;&quot;</span>, <span class="st">&quot;0&quot;</span>, minutes)</span>
+<span id="cb31-42"><a href="data-managment-principles.html#cb31-42" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb31-43"><a href="data-managment-principles.html#cb31-43" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">minutes_passed =</span> <span class="dv">60</span><span class="sc">*</span><span class="fu">as.numeric</span>(hours) <span class="sc">+</span> <span class="fu">as.numeric</span>(minutes))</span>
+<span id="cb31-44"><a href="data-managment-principles.html#cb31-44" tabindex="-1"></a></span>
+<span id="cb31-45"><a href="data-managment-principles.html#cb31-45" tabindex="-1"></a><span class="do">## misingness</span></span>
+<span id="cb31-46"><a href="data-managment-principles.html#cb31-46" tabindex="-1"></a>data_tidy <span class="sc">%&gt;%</span></span>
+<span id="cb31-47"><a href="data-managment-principles.html#cb31-47" tabindex="-1"></a>  naniar<span class="sc">::</span><span class="fu">vis_miss</span>()</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="data-managment-principles.html#cb32-1" tabindex="-1"></a><span class="do">## graphs</span></span>
+<span id="cb32-2"><a href="data-managment-principles.html#cb32-2" tabindex="-1"></a>data_tidy_time <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="data-managment-principles.html#cb32-3" tabindex="-1"></a>  <span class="fu">group_by</span>(condition, ul_salmonella, minutes_passed) <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a href="data-managment-principles.html#cb32-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_value =</span> <span class="fu">mean</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb32-5"><a href="data-managment-principles.html#cb32-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ul_salmonella =</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(ul_salmonella), <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb32-6"><a href="data-managment-principles.html#cb32-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minutes_passed, <span class="at">y =</span> mean_value)) <span class="sc">+</span></span>
+<span id="cb32-7"><a href="data-managment-principles.html#cb32-7" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">colour =</span> condition), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb32-8"><a href="data-managment-principles.html#cb32-8" tabindex="-1"></a>  <span class="fu">facet_grid</span>(condition <span class="sc">~</span> ul_salmonella) <span class="sc">+</span></span>
+<span id="cb32-9"><a href="data-managment-principles.html#cb32-9" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Time passed (minutes)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb32-10"><a href="data-managment-principles.html#cb32-10" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Mean AU&quot;</span>)</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by
+## &#39;condition&#39;, &#39;ul_salmonella&#39;. You can
+## override using the `.groups` argument.</code></pre>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 
+</div>
             </section>
 
           </div>
         </div>
       </div>
 <a href="agile-collaboration.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-guerrilla-data_management-principles.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="reproducible-research.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

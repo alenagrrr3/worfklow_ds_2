@@ -142,6 +142,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Lesson 1 Git and GitHub</a></li>
 <li class="chapter" data-level="2" data-path="agile-collaboration.html"><a href="agile-collaboration.html"><i class="fa fa-check"></i><b>2</b> Agile collaboration</a></li>
+<li class="chapter" data-level="3" data-path="data-managment-principles.html"><a href="data-managment-principles.html"><i class="fa fa-check"></i><b>3</b> Data managment principles</a></li>
+<li class="chapter" data-level="4" data-path="reproducible-research.html"><a href="reproducible-research.html"><i class="fa fa-check"></i><b>4</b> Reproducible research</a></li>
+<li class="chapter" data-level="5" data-path="working-with-relational-databases.html"><a href="working-with-relational-databases.html"><i class="fa fa-check"></i><b>5</b> Working with relational databases</a></li>
+<li class="chapter" data-level="6" data-path="creating-r-packages.html"><a href="creating-r-packages.html"><i class="fa fa-check"></i><b>6</b> Creating R packages</a></li>
+<li class="chapter" data-level="7" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>7</b> Parameterized reports</a></li>
+<li class="chapter" data-level="8" data-path="rmarkdownsyntax.html"><a href="rmarkdownsyntax.html"><i class="fa fa-check"></i><b>8</b> Rmarkdownsyntax</a></li>
 <li class="divider"></li>
 <li><a href="https://alenagrrr3.github.io/worfklow_ds_2/index.html" target="blank">Published with bookdown</a></li>
 </ul>
@@ -163,52 +169,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="agile-collaboration" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Agile collaboration<a href="agile-collaboration.html#agile-collaboration" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<h3>
-Lesson 2. Git conflict.
-</h3>
-<div class="gray">
+<p>Lesson 2. Git conflict.</p>
 <p>Lesson 2. Git conflict.
 Change 2 lines in your README.md locally (on your own computer)
 Create one commit for each change:
 Select the changes you want to commit and click commit
 Add a commit message and click Commit
 Do NOT push (yet)</p>
-</div>
 <p><img src="images/img_conflict.png" alt="git conflict in readme.md" />
 <img src="images/resolve_conflict.png" alt="half-size image" /></p>
-<h3>
-Lesson 2. Exercise 2.1
-</h3>
-<div class="gray">
+<p>Lesson 2. Exercise 2.1</p>
 <pre><code>Create a new branch in RStudio.
 Modify the markdown file by adding some additional text. Save the changes and commit/push the changes to GitHub. Go to GitHub and try to find the commits of the new branch.
 In RStudio, change to the main branch. What happens to your recent changes in your RMarkdown file? What happens if you change to your development branch?
 Merge your changes with the main branch by creating and resolving a pull request. In RStudio, switch to the main branch and pull your changes. Does the RMarkdown file now have the changes?
 Delete the local development branch using the command line.</code></pre>
-</div>
 <p><img src="images/create_new_branch.png" alt="git conflict in readme.md" />
 <img src="images/new_branch.png" alt="resolve conflict" /></p>
 <h3>
 Exercise 2
 </h3>
-<div class="gray">
 <p>Projecticum repository</p>
 <p>Create one shared Git repository on GitHub for your Projecticum project.</p>
 <p>The teachers have created a projecticum organisation on github, make sure you make your repository within this organisation.</p>
 <p>Also make sure that the repository is shared and that your group member(s) can contribute. Subsequently, clone the GitHub repository to your computer and add your files using a development branch. Now Commit/push the changes and add the files to the main branch with a pull request.</p>
 <p>Try working on the same files at the same time in separate branches, and merge your branches to the main branch. Solve the issues you encounter.</p>
 <p>Try both renaming a file and merge your branches to the main branch. Solve any issues you encounter.</p>
-</div>
 <p>git clone <a href="https://github.com/ProjecticumDataScience/minion_seq.git" class="uri">https://github.com/ProjecticumDataScience/minion_seq.git</a></p>
 <div class="float">
 <img src="images/minion_seq.png" alt="projecticum ProjecticumDataScience" />
 <div class="figcaption">projecticum ProjecticumDataScience</div>
 </div>
-<div class="gray">
 <p>Exercise 2.3</p>
 <p>Study the Github Flow Documentation site mentioned above.</p>
 <p>Discuss it with your Projecticum partner. See to it that you two really understand all the steps of the flow mentioned in the documentation.</p>
-<div>
 <p>Git documentation</p>
 <p><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/" class="uri">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/</a></p>
 <p>Plan for vrije opdracht</p>
@@ -216,7 +210,6 @@ Exercise 2
 2-3 dagen implementatie , testen, rappoartage</p>
 <p>140 uren workflow
 32 vrije opdracht</p>
-<div class="gray">
 <p>Exercise 2</p>
 <p>Github documentation</p>
 <pre><code>Study the github documentation on “Project Boards” here
@@ -224,14 +217,12 @@ Exercise 2
 Setup a github project for your projecticum in your github account.
 
 Use the repo within the projecticum organisation, Link this repo to the github project you just created.</code></pre>
-</div>
 <p>link for proejcticum dashboard:</p>
 <p><a href="https://github.com/orgs/ProjecticumDataScience/projects/36/views/2" class="uri">https://github.com/orgs/ProjecticumDataScience/projects/36/views/2</a></p>
 <div class="float">
 <img src="images/dashboard.png" alt="dashboard" />
 <div class="figcaption">dashboard</div>
 </div>
-<div class="gray">
 <p>To complete this exercise, you need to complete the following steps:</p>
 <pre><code>Create at least 1 milestones for the first sprint of your projecticum project
 Create a number of issues that need to be resolved for these 2 milestones to be completed (link these issue to the appropriate milestone you created in the previous step)
@@ -249,7 +240,6 @@ Create a pull request to the main branch
 Merge the pull request into main
 Observe what happened on the Kanban board. Where did the issue you just resolved land? What happened to the milestone?
 Delete the branch related to the issue you just resolved</code></pre>
-</div>
 <p>Kanban board</p>
 <div class="float">
 <img src="images/dashboard.png" alt="dashboard" />
@@ -266,7 +256,6 @@ Delete the branch related to the issue you just resolved</code></pre>
 <h3>
 Exercise 2.12
 </h3>
-<div class="gray">
 <p>Exercise 2</p>
 <p>Transform your portfolio to a local bookdown site</p>
 <p>During this course you will collect .Rmd files with the different portfolio exercises. If everything went well, you have these files collected in your portfolio RStudio project, linked to a Github repo.</p>
@@ -276,9 +265,9 @@ Add any portfolio .Rmd files you already generated to the folder. You can arrang
 When you have build your index.Rmd file and have collected all files in the root of your project, be sure all depending data, scripts and other files such as images etc. are also present in the project. Use the guerrilla analytics logic to setup the project structure if you lost track of it.
 Set the option new_session: yes in your _bookdown.yml or index.Rmd file. This prevent problems down the line.
 Render the book until all errors are solved. You can debug each file and error by looking at the line numbers where the rendering is causing problems.</code></pre>
-</div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="agile-collaboration.html#cb8-1" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">render_book</span>(<span class="st">&quot;.&quot;</span>)</span></code></pre></div>
 
+</div>
             </section>
 
           </div>
