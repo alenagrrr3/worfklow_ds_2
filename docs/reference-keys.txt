@@ -8,3 +8,5 @@ creating-r-packages
 parameterized-rmarkdown
 r-markdown-syntax-output-formats
 introduction
+rmarkdownsyntax
+parameterized-reports

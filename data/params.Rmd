@@ -1,0 +1,20 @@
+---
+title: "params"
+output: html_document
+date: "2024-12-29"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+You can access the parameters :
+
+
+```{r}
+params$year
+params$region
+```
+
+

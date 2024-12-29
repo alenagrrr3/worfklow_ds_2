@@ -1,0 +1,10 @@
+#  Parameterized reports
+
+```{r}
+rmarkdown::render("data/params.Rmd", params = list(
+  year = 2017,
+  region = "Asia"
+))
+
+```
+

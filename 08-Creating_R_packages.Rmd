@@ -1,3 +1,67 @@
 # Creating R packages
 
+```{r}
+library(devtools)
+packageVersion("devtools")
+
+
+```
+
+
+```{r, eval=FALSE}
+create_package("~/path/to/regexcite")
+```
+
+
+```{r, eval=FALSE}
+use_git()
+```
+
+```{r}
+(x <- "alfa,bravo,charlie,delta")
+#> [1] "alfa,bravo,charlie,delta"
+strsplit(x, split = ",")
+```
+
+```{r}
+str(strsplit(x, split = ","))
+```
+
+
+```{r}
+unlist(strsplit(x, split = ","))
+```
+
+
+```{r}
+strsplit(x, split = ",")[[1]]
+```
+
+
+```{r}
+strsplit1 <- function(x, split) {
+  strsplit(x, split = split)[[1]]
+}
+```
+
+```{r}
+use_r("strsplit1")
+```
+
+```{r, eval=FALSE}
+load_all()
+```
+
+
+```{r}
+
+(x <- "alfa,bravo,charlie,delta")
+strsplit1(x, split = ",")
+```
+
+
+```{r, eval=FALSE}
+check()
+```
+
 

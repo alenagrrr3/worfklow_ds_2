@@ -3,6 +3,9 @@ title: "worflow DSFB"
 author: "alena savacehnko"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+
+params:
+  data: "hawaii"
 ---
 
 # Lesson 1 Git and GitHub 
