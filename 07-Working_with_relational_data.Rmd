@@ -1,3 +1,127 @@
 #  Working with relational databases
 
+```{r}
+library(palmerpenguins)
+library(tidyverse)
+
+penguins %>% 
+  tidyr::pivot_longer(contains("_"), # measurement cols
+                      names_to = c("variable_name"), 
+                      values_to = "value")
+```
+
+```{r}
+penguins_long <- penguins %>% 
+  tidyr::pivot_longer(contains("_"), # measurement cols
+                      names_to = c("part", "measure", "unit"), 
+                      names_sep = "_")
+
+penguins_long
+```
+
+
+```{r}
+penguins_long %>% 
+  tidyr::pivot_wider(names_from = c("part", "measure", "unit"), # pivot these columns
+                     values_from = "value", # take the values from here
+                     names_sep = "_") # combine col names using an underscore
+```
+
+
+```{r}
+# give each measured penguin a number
+penguins_with_id <- penguins %>%  mutate(id=seq(nrow(.)))
+
+# make the data long again
+penguins_long_ided <- penguins_with_id %>% 
+      tidyr::pivot_longer(contains("_"), # measurement cols
+                      names_to = c("part", "measure", "unit"), 
+                      names_sep = "_")
+
+# and wide again
+penguins_long_ided2 <-  penguins_long_ided %>% 
+    tidyr::pivot_wider(names_from = c("part", "measure", "unit"), 
+                     values_from = "value", 
+                     names_sep = "_") 
+```
+
+
+
+
+
+```{r}
+penguins %>% head()
+```
+
+
+```{r}
+penguins %>% mutate(penguin_id = row_number(),.before = species)
+```
+
+
+```{r}
+food_preference <-
+  tibble(
+    penguin_species = c("Adelie", "Chinstrap", "Gentoo"),
+    favorite_food = c("peanut butter", "cheese", "chocolate")
+  )
+```
+
+```{r}
+left_join(
+  penguins, food_preference, by = c("species" = "penguin_species")
+)
+```
+
+```{r}
+penguins %>% mutate(penguin_id = row_number(),.before = species)
+```
+
+
+<div class= "gray">
+
+Let’s refresh your memory. Take the penguins dataset.
+
+As we all know, Adelie penguins love peanut butter, Chinstrap penguins prefer cheese and Gentoo penguins do anything for chocolate.
+
+Here is a table describing food preference:
+
+</div>
+
+
+```{r}
+food_preference <-
+  tibble(
+    penguin_species = c("Adelie", "Chinstrap", "Gentoo"),
+    favorite_food = c("peanut butter", "cheese", "chocolate")
+  )
+```
+
+
+```{r}
+joined <-  left_join(
+  penguins, food_preference, by = c("species" = "penguin_species")
+)
+```
+
+<div class= "gray">
+
+Now make a new tibble containing only the information on penguin species, sex and bill length measured in 2009 using filter and select.
+</div>
+#penguins_long_ided
+#species island    sex     year    id bill_length_mm bill_depth_mm
+
+
+```{r}
+
+##filter(year=="2009")
+# species island    sex     year    id bill_length_mm bill_depth_mm
+
+
+head(penguins_long_ided2)  
+
+new_tbl <- penguins_long_ided2  %>%  filter(year==2009) %>%  select(species,sex,bill_length_mm)
+
+head(new_tbl)
+```
 
