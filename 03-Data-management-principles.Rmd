@@ -1,7 +1,7 @@
 # Data managment principles
 
 
-<div class= "gray" >
+<div class= "gray">
 
 Imagine you receive a file attached to an email from a researcher in your research group called:
 
@@ -23,5 +23,261 @@ Describe the following steps in an RMarkdown file. You do not need to write the 
     Write a conceptual and kind and friendly, but clear reply email (in English) to the researcher, where you address the changes that the researcher needs to make to the file in order for you to be able to analyze this data in R.
 
 </div>
+
+Set meeting per sample per data point in apart column. 
+
+<div class= "gray">
+There are actually 4 very similar files lying around.
+
+Download the data here.
+
+Find out which one is different from the other three using their MD5sums. If you want, md5sum can handle multiple files at the same time, but wants full paths for all of them.
+
+</div>
+
+
+```{r}
+library("tidyverse")
+```
+
+
+```{r examplemd5}
+
+myDir <- here::here(
+    "data-raw",
+    "md5_examples")
+
+fileNames <- list.files(myDir, recursive = TRUE)
+
+tools::md5sum(file.path(myDir, fileNames)) %>% enframe() -> md5sums_all
+md5sums_all$filename <- fileNames
+md5sums_all %>% select(filename,value)
+```
+
+
+<div class= "gray">
+Determine the md5sums of the file. Save the checksums to a file [write a piece of R code]
+</div>
+
+```{r}
+# calculate md5sums for file "toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv"
+tools::md5sum(
+  here::here(
+    "data",
+    "toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv"
+  )
+) %>%
+  enframe() -> md5sums_toxref
+
+
+
+md5sums_toxref %>% # write as dataframe for easy access
+  readr::write_csv(
+    here::here(
+      "data",
+      "toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.md5")
+  )
+
+
+```
+
+
+<div class= "gray">
+Download the md5 file you just generated on the server (or upload the one you generated locally). Can you think of a way to check in an R script whether they are the same? Write the script and save it in a .R file
+</div>
+
+
+```{r}
+
+# calculate md5sums for file "toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv"
+tools::md5sum(
+  here::here(
+    "data",
+    "toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv"
+  )
+) %>%
+  enframe() -> md5sums_toxref
+
+
+
+md5sums_toxref %>% # write as dataframe for easy access
+  readr::write_csv(
+    here::here(
+      "data",
+      "toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.md5")
+  )
+
+
+```
+
+
+<div class= "gray">
+Now look at your last laboratory project and take a look at your folder structure. Clean it!
+</div>
+
+```{r}
+fs::dir_tree(here::here("data-raw"))
+```
+
+
+<div class= "gray">
+ Download it here if you’ve lost it and take a good look at your file management…
+
+Go over the following steps to complete this exercise.
+
+    Review your answers to the previous exercise where we used this file in this lesson.
+    Try reading the sheet called All Cycles in the Excel file.
+    What goes wrong with the formatting of the data if you start reading in the data from cell A1?
+    Try solving this problem.
+    What shape of formatting would you say this data is in? Is the data tidy?
+    Write a piece of code that creates a tidy format of this data. You also need to take a look a the sheet called layout to get information on the samples. Try generating a manual data frame that has 96 rows and a code for each sample. The experiment has been performed in duplo, so for each experimental condition there are two samples.
+    Now join your sample data dataframe to the raw data.
+    Export the data as a .csv file.
+    Write an appropriate README.txt file that accompanies this exported csv file. Save both in your data folder of your course project. (make this folder if you don’t have it yet).
+    </div>
+    
+    
+```{r}
+library(readxl)
+
+data_platereader <- read_xlsx(
+  here::here(
+    "data-raw",
+    "salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx"
+  ), sheet = "All Cycles"
+)
+## this data looks mangled because of several things: 
+# there is some metadata in the top region of the sheet
+# there is a weird looking headers (two headers?)
+
+## trying skip
+data_platereader <- read_xlsx(
+  here::here(
+    "data-raw",
+    "salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx"
+  ), sheet = "All Cycles", skip = 11
+)
+
+## clean up and fix names
+data_platereader <- data_platereader %>%
+  rename(sample = Time, well = ...1) %>%
+  janitor::clean_names()
+
+## which wells have data?
+unique(data_platereader$well)
+```
+   
+
+```{r}
+## create sample table
+sample_names <- data_platereader$sample
+
+mv_utr_tx100 <- rep(c("mv", "mv", "mv", "mv", 
+                      "untr", "untr", "untr", "untr", "untr",
+                      "tx100", "tx100", "tx100"), times = 8)
+
+salmonella <- read_xlsx(
+  here::here(
+    "data-raw",
+    "salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx"
+  ), sheet = "layout", range = "C5:N13"
+) %>%
+  janitor::clean_names() 
+
+# cheack data types
+map(
+  .x = salmonella,
+  typeof
+)
+```
+   
+
+```{r}
+salmonella <- salmonella %>%
+  pivot_longer(ul_sal_1:ul_sal_12,
+               names_to = "plate_column", 
+               values_to = "microliters_bacteria")
+
+## synthesize to sample table
+
+samples <- tibble(
+  well = data_platereader$well,  
+  sample = sample_names,
+  condition = mv_utr_tx100,
+  ul_salmonella = salmonella$microliters_bacteria
+)
+
+## join sample table with data
+data_join <- left_join(samples, data_platereader)
+
+## create tidy version
+data_tidy <- data_join %>%
+  pivot_longer(
+    x0_h:x24_h_5_min,
+    names_to = "time",
+    values_to = "value"
+  )
+
+## fix time variable
+data_tidy_time <- data_tidy %>%
+  mutate(time_var =
+  str_replace_all(
+    string = time,
+    pattern = "x",
+    replacement = ""
+  )) %>%
+  mutate(time_var =
+  str_replace_all(
+    string = time_var,
+    pattern = "_",
+    replacement = ""
+  )) %>%
+  mutate(time_var =
+  str_replace_all(
+    string = time_var,
+    pattern = "h",
+    replacement = ":"
+  )) %>%
+  mutate(time_var =
+  str_replace_all(
+    string = time_var,
+    pattern = "min",
+    replacement = ""
+  )) %>%
+  separate(
+    col = time_var,
+    into = c("hours", "minutes"),
+    remove = FALSE
+  ) %>%
+  mutate(
+    minutes = ifelse(minutes == "", "0", minutes)
+  ) %>%
+  mutate(minutes_passed = 60*as.numeric(hours) + as.numeric(minutes))
+
+## misingness
+data_tidy %>%
+  naniar::vis_miss()
+
+
+
+
+```
+    
+
+
+```{r}
+## graphs
+data_tidy_time %>%
+  group_by(condition, ul_salmonella, minutes_passed) %>%
+  summarise(mean_value = mean(value)) %>%
+  mutate(ul_salmonella = round(as.numeric(ul_salmonella), 2)) %>%
+  ggplot(aes(x = minutes_passed, y = mean_value)) +
+  geom_line(aes(colour = condition), show.legend = FALSE) +
+  facet_grid(condition ~ ul_salmonella) +
+  xlab("Time passed (minutes)") +
+  ylab("Mean AU")
+```
+
+
 
 
